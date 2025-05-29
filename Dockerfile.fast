@@ -27,7 +27,7 @@ RUN npm ci --omit=dev --no-optional --verbose
 COPY . .
 
 # 尝试构建，如果失败则Docker构建也失败
-RUN npx strapi build
+RUN npx strapi build --debug
 
 # 暴露端口
 EXPOSE 1337
