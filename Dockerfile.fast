@@ -27,7 +27,7 @@ RUN npm ci --omit=dev --no-optional --verbose
 COPY . .
 
 # 尝试构建，如果失败则跳过
-RUN npm run build || echo "Build failed, will run in development mode"
+RUN strapi build --no-optimization || echo "Build failed, will attempt to run in development mode if CMD is adapted"
 
 # 暴露端口
 EXPOSE 1337
