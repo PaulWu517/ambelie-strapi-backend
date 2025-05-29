@@ -1,0 +1,29 @@
+# 无构建 Dockerfile - 最快部署方案
+FROM node:18-slim
+
+WORKDIR /app
+
+# 最小化系统依赖安装
+RUN apt-get update && apt-get install -y \
+    libvips-dev \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# 设置环境变量
+ENV NODE_ENV=development
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV STRAPI_TELEMETRY_DISABLED=true
+ENV STRAPI_DISABLE_ADMIN=false
+
+# 复制所有文件
+COPY package*.json ./
+COPY . .
+
+# 快速安装生产依赖
+RUN npm ci --production --no-optional
+
+# 暴露端口
+EXPOSE 1337
+
+# 直接启动开发模式（无需构建）
+CMD ["npm", "run", "develop"] 
