@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "asian_art_items",
+  "info": {
+    "singularName": "asian-art-item",
+    "pluralName": "asian-art-items",
+    "displayName": "Asian Art Item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Period": {
+      "type": "string"
+    },
+    "Main_Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Hover_Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
